@@ -21,9 +21,9 @@ if [ "$isDocker" = "" ]; then
 fi
 
 #创建数据库目录
-if [ ! -s /data/umami/database ]; then
-	mkdir -p -m 0700 /data/umami/database
-	chown 999:999 /data/umami/database
+if [ ! -s /data/database/postgresql/umami ]; then
+	mkdir -p -m 0700 /data/database/postgresql/umami
+	chown 999:999 /data/database/postgresql/umami
 fi
 
 ##
@@ -46,10 +46,10 @@ services:
     restart: always
     environment:
       POSTGRES_DB: umami
-      POSTGRES_USER: umami
-      POSTGRES_PASSWORD: umami123
+      POSTGRES_USER: umamiuser
+      POSTGRES_PASSWORD: f9fe911e5f7dd38e011ceb932ed9c15d
     volumes:
-      - /data/umami/database:/var/lib/postgresql/data
+      - /data/database/postgresql/umami:/var/lib/postgresql/data
 
   umami:
     image: ghcr.io/umami-software/umami:latest
@@ -58,8 +58,8 @@ services:
     ports:
       - "3000:3000"
     environment:
-      DATABASE_URL: postgresql://umami:umami123@db:5432/umami
-      HASH_SALT: WFZ4A/pE0ttDxACg
+      DATABASE_URL: postgresql://umamiuser:f9fe911e5f7dd38e011ceb932ed9c15d@db:5432/umami
+      HASH_SALT: 43e26ba9952b3ff50c4fb03077e5b2ed
     depends_on:
       - db
 EOF
@@ -73,6 +73,6 @@ cd -
 
 printf "\n========== Umami install Completed! ========\n\n"
 
-ps aux | grep docker
+netstat -ntlp | grep 3000
 
 printf "============== The End. ==============\n"
