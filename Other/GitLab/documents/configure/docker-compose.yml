@@ -1,0 +1,19 @@
+services:
+  gitlab:
+    image: gitlab/gitlab-ce:latest
+    container_name: gitlab
+    restart: always
+    hostname: 'gitlab.980080.xyz'
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+      external_url: 'http://192.168.8.109:9090'
+      gitlab_rails['gitlab_shell_ssh_port']: 222
+    ports:
+      - '9090:80'
+      - '1443:443'
+      - '222:22'
+    volumes:
+      - '/data/gitlab/config:/etc/gitlab'
+      - '/data/gitlab/logs:/var/log/gitlab'
+      - '/data/gitlab/data:/var/opt/gitlab'
+    shm_size: '256m'
