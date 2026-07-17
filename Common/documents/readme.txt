@@ -50,7 +50,7 @@ sudo hostnamectl status 查看主机名等信息
 
 
 三、关闭selinux服务
-注：Debian13默认没有安装selinux
+注：Debian12默认没有安装selinux
 
 1、查看状态
 #sestatus
@@ -106,7 +106,7 @@ Sun, 27 Apr 2014 01:10:36 +0800
 #chronyc -a makestep
 
 六、配置防火墙
-注：Debian 13默认没有安装防火墙。需要手动安装， 推荐ufw防火墙，原因操作简单。
+注：Debian 12默认没有安装防火墙。需要手动安装， 推荐ufw防火墙，原因操作简单。
 
 # 安装 UFW
 sudo apt install ufw
@@ -142,7 +142,7 @@ iface enp0s3:1 inet static
 
 八、数字证书远程登陆(ssh key)
 
-注：Debian 13 默认 root用户不支持远程登陆。需要编辑ssh配置文件
+注：Debian 12 默认 root用户不支持远程登陆。需要编辑ssh配置文件
 
 #sed -i 's/^#PermitRootLogin prohibit-password/PermitRootLogin yes/g' /etc/ssh/sshd_config
 #sed -i 's/^#PasswordAuthentication yes/PasswordAuthentication yes/g' /etc/ssh/sshd_config
