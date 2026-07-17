@@ -1,0 +1,15 @@
+[Unit]
+Description=MariaDB server and services
+After=syslog.target
+After=network.target
+
+[Service]
+Type=simple
+User=mysql
+Group=mysql
+ExecStart=/usr/local/mysql/bin/mysqld
+TimeoutSec=300
+PrivateTmp=false
+
+[Install]
+WantedBy=multi-user.target
