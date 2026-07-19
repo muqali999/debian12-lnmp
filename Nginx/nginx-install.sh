@@ -39,7 +39,7 @@ useradd -g www www -s /bin/false
 if [ -s /data/www ]; then
 	rm -rf /data/www
 fi
-mkdir -m 0755 -p /data/www /data/www/htdocs /data/www/crontab /data/www/cache /data/www/tmp
+mkdir -m 0755 -p /data/www /data/www/htdocs /data/www/crontab /data/www/cache /data/www/runtime
 chown -R www:www /data/www
 
 if [ -s /data/logs/nginx ]; then

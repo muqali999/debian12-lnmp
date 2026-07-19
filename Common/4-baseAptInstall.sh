@@ -43,7 +43,7 @@ apt -y install libcurl4-openssl-dev curl openssl
 
 apt -y install systemd-dev
 apt -y install libevent-dev libpsl-dev
-apt -y install bzip2 zstd
+apt -y install bzip2 libbz2-dev zstd
 
 apt -y install libxml2-dev libxslt-dev libsasl2-dev
 apt -y install libaio-dev libtool
