@@ -1,0 +1,16 @@
+[Unit]
+Description=Redis persistent key-value database
+After=network.target
+
+[Service]
+Type=forking
+User=redis
+Group=redis
+PIDFile=/usr/local/redis/var/run/redis_6379.pid
+ExecStart=/usr/local/redis/bin/redis-server /usr/local/redis/etc/redis.conf
+ExecReload=/bin/kill -s HUP $MAINPID
+ExecStop=/bin/kill -s QUIT $MAINPID
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
