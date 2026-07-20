@@ -201,8 +201,8 @@ if [ ! -s /var/log/php ]; then
 fi
 
 if [ ! -s /data/www/runtime/session ]; then
-	mkdir -m 0777 -p /data/www/runtime/session /data/www/runtime/xhprof
-	chown www:www -R /data/www/runtime/session /data/www/runtime/xhprof
+	mkdir -m 0777 -p /data/www/runtime/session /data/www/runtime/xhprof /data/www/runtime/php-opcache
+	chown www:www -R /data/www/runtime/session /data/www/runtime/xhprof /data/www/runtime/php-opcache
 fi
 
 if [ -s /usr/local/php/var/run ]; then
@@ -238,7 +238,7 @@ fi
 #关闭opcache缓存
 read -p "Do you want close opcache?[y/n]:" isCloseOpcache
 if [ "$isCloseOpcache" = "y" ] || [ "$isCloseOpcache" = "Y" ]; then
-	sed -i 's/^;opcache.enable=1/opcache.enable=0/g' /usr/local/php/etc/php.ini
+	sed -i 's/^opcache.enable=1/opcache.enable=0/g' /usr/local/php/etc/php.ini
 fi
 
 #是否使用phpinfo函数
