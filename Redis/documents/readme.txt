@@ -1,7 +1,7 @@
 
-Redis-7.4.2 安装说明
+valkey-9.1.0 安装说明
 
-软件用途：NoSql Database
+软件用途：Cache
 
 一、软件安装
 
@@ -30,7 +30,7 @@ pid:	  /usr/local/redis/var/run/redis.pid
 日志目录：
 /data/logs/redis/
 日志文件：
-/data/logs/redis/redislog
+/data/logs/redis/redis.log
 
 四、控制命令
 启动 : systemctl start redis.service
@@ -64,10 +64,14 @@ requirepass xiaoke@2022
 
 
 附:CLI操作命令
+实例1：
 登陆：/usr/local/redis/bin/redis-cli -h localhost -p 6379 -a "password"
 查询所有的key:->keys *
 设置数据:     ->set test.name tommy
 获取数据：    ->get test.name
 
-ssdb(Redis替代品)
-http://ssdb.io/zh_cn/
+实例2：
+登陆：/usr/local/redis/bin/redis-cli -h localhost -p 6379
+127.0.0.1:6379> AUTH "你的密码"
+
+注：默认密码 Ivy@777!

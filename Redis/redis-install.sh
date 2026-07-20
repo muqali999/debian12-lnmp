@@ -58,7 +58,7 @@ tar zxvf valkey-9.1.0.tar.gz
 
 mv redis /usr/local/redis
 
-if [ ! -f /usr/local/redis/bin/redis-server ]; then
+if [ ! -f /usr/local/redis/bin/valkey-server ]; then
     printf "Error: redis compile install failed!\n"
     exit 1
 fi
@@ -91,12 +91,12 @@ fi
 if [ -f /usr/bin/redis-server ]; then
 	rm -rf /usr/bin/redis-server
 fi
-ln -s /usr/local/redis/bin/redis-server /usr/bin/redis-server
+ln -s /usr/local/redis/bin/valkey-server /usr/bin/redis-server
 
-if [ -f /usr/local/redis/bin/redis-server ]; then
+if [ -f /usr/local/redis/bin/valkey-server ]; then
 	rm -rf /usr/bin/redis
 fi
-ln -s /usr/local/redis/bin/redis-cli /usr/bin/redis
+ln -s /usr/local/redis/bin/valkey-cli /usr/bin/redis
 
 if [ -s /etc/redis ]; then
 	rm -rf /etc/redis
