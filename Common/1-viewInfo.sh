@@ -181,4 +181,13 @@ fi
 printf "\ncat /etc/crontab :\n"
 cat /etc/crontab
 
+#查看APT源信息
+printf "\ncat /etc/apt/sources.list :\n"
+cat /etc/apt/sources.list
+
+printf "\ncat /etc/apt/sources.list.d/debian.sources :\n"
+if [ -f /etc/apt/sources.list.d/debian.sources ]; then
+    cat /etc/apt/sources.list.d/debian.sources
+fi
+
 printf "============== The End. ==============\n"
