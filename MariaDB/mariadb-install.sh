@@ -18,8 +18,8 @@ if [ ! -s src ]; then
     exit 1
 fi
 
-if [ ! -f mysqld.service.txt ]; then
-    printf "the file mysqld.service.txt is not exists!\n"
+if [ ! -f mariadb.service.txt ]; then
+    printf "the file mariadb.service.txt is not exists!\n"
 	exit 1
 fi
 
@@ -151,7 +151,7 @@ ln -s /usr/local/mysql/bin/mariadb-dump /usr/bin/mysqldump
 if [ -f /etc/systemd/system/mysqld.service ]; then
 	rm -rf /etc/systemd/system/mysqld.service
 fi
-mv ../mysqld.service.txt /etc/systemd/system/mysqld.service
+mv ../mariadb.service.txt /etc/systemd/system/mysqld.service
 
 systemctl daemon-reload
 
