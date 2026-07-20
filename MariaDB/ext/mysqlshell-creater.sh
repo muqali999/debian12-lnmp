@@ -33,7 +33,7 @@ cd .cmd
 #create mysql connetc shell script
 cat >mysql-connect.sh<<EOF
 #!/bin/bash
-/usr/local/mysql/bin/mysql -hlocalhost -ugentleman -p1f066e52329503694f92512c6bcab726
+/usr/local/mysql/bin/mariadb -hlocalhost -ugentleman -p1f066e52329503694f92512c6bcab726
 EOF
 
 #create mysqldump shell script

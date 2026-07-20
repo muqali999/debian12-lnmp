@@ -139,7 +139,7 @@ mkdir -m 0775 -p /usr/local/mysql/var/run
 chown -R mysql:mysql /usr/local/mysql/var/run
 
 #启动Mysql
-/usr/local/mysql/scripts/mysql_install_db --user=mysql --group=mysql --datadir=/data/database/mysql
+/usr/local/mysql/scripts/mariadb-install-db --user=mysql --group=mysql --datadir=/data/database/mysql
 
 ln -s /usr/local/mysql/lib/mysql /usr/lib/mysql
 ln -s /usr/local/mysql/include/mysql /usr/include/mysql
