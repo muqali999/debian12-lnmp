@@ -21,7 +21,10 @@ fi
 
 printf "create ssh keys start...\n"
 
-ssh-keygen -t rsa
+#推荐使用安全性更高的 Ed25519 算法来生成 SSH 密钥
+#ssh-keygen -t rsa
+
+ssh-keygen -t ed25519 -C "tommy@doitphp.com"
 
 cd /root/.ssh
 pwd
