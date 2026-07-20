@@ -41,7 +41,7 @@ apt -y install dos2unix ncurses-dev libreadline-dev
 #网络相关
 apt -y install libcurl4-openssl-dev curl openssl
 
-apt -y install systemd-dev
+apt -y install libsystemd-dev
 apt -y install libevent-dev libpsl-dev
 apt -y install bzip2 libbz2-dev zstd
 
