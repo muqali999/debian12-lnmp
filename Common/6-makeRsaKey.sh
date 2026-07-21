@@ -8,14 +8,14 @@ fi
 
 printf "\n"
 printf "================================\n"
-printf " create rsa key \n"
+printf " create ed25519 key \n"
 printf " copyright:www.doitphp.com      \n"
 printf "================================\n"
 printf "\n\n"
 
 #当有srakey存在时
-if [ -f /root/.ssh/id_rsa.pub ] && [ -f /root/.ssh/authorized_keys ]; then
-	echo "/root/.ssh/id_rsa.pub is exists!";
+if [ -f /root/.ssh/id_ed25519.pub ] && [ -f /root/.ssh/authorized_keys ]; then
+	echo "/root/.ssh/id_ed25519.pub is exists!";
 	exit 1
 fi
 

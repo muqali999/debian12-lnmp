@@ -20,7 +20,7 @@ if [ $isset != 'y' ]; then
 	exit 1
 fi
 
-mv /root/.ssh/id_rsa.pub /root/.ssh/authorized_keys
+mv /root/.ssh/id_ed25519.pub /root/.ssh/authorized_keys
 chmod 600 /root/.ssh/authorized_keys
 
 sed -i 's/^#RSAAuthentication yes/RSAAuthentication yes/g' /etc/ssh/sshd_config
@@ -31,13 +31,16 @@ sed -i 's/^PasswordAuthentication yes/PasswordAuthentication no/g' /etc/ssh/sshd
 read -p "Do you want update ssh port?[y/n]:" confirmSSHPort
 if [ "$confirmSSHPort" = "y" ] || [ "$confirmSSHPort" = "Y" ]; then
 	read -p "Input your customize ssh port :" sshPort
-	if [ -f /etc/firewalld/firewalld.conf ]; then
-		firewall-cmd --zone=public --add-port=$sshPort/tcp --permanent
-		cat /etc/firewalld/zones/public.xml | grep $sshPort
-		systemctl restart firewalld
-	fi
+	#更改sshd配置文件
 	sed -i "s/^#Port 22/Port $sshPort/g" /etc/ssh/sshd_config
 	cat /etc/ssh/sshd_config | grep $sshPort
+	
+	#更改防火墙配置
+	if [ -f /etc/ufw/ufw.conf ]; then
+		sudo ufw allow $sshPort
+		sudo ufw status verbose | grep $sshPort
+		sudo ufw reload
+	fi
 fi
 
 systemctl restart sshd

@@ -16,8 +16,17 @@ printf "\n\n"
 #安装依赖软件包
 apt -y update && apt -y install gnupg apt-transport-https
 
-apt -y install openjdk-21-jdk
-java -version
+isjava=`whereis java|awk '{print $2}'`
+if [ "$isjava" != "/usr/bin/java" ]; then
+	[ -d "src" ] || mkdir src
+	cd src
+	wget https://download.oracle.com/java/21/latest/jdk-21_linux-x64_bin.deb
+	dpkg -i jdk-21_linux-x64_bin.deb
+	java -version
+	cd -
+else
+	printf "/usr/bin/java already exists.\n"
+fi
 
 #添加公钥
 wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo gpg --dearmor -o /usr/share/keyrings/elasticsearch-keyring.gpg
