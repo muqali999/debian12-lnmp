@@ -1,0 +1,13 @@
+[Unit]
+Description=Live Syncing (Mirror) Daemon
+After=network.target network-online.target
+Wants=network-online.target
+ 
+[Service]
+ExecStart=/usr/local/lsyncd/bin/lsyncd -nodaemon /usr/local/lsyncd/etc/lsyncd.conf.lua
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=always
+RestartSec=5s
+ 
+[Install]
+WantedBy=multi-user.target
