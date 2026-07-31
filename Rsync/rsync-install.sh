@@ -80,6 +80,7 @@ if [ -f /etc/systemd/system/rsyncd.service ]; then
     rm -rf /etc/systemd/system/rsyncd.service
 fi
 mv ../rsyncd.service.txt /etc/systemd/system/rsyncd.service
+chmod +x /etc/systemd/system/rsyncd.service
 
 systemctl daemon-reload
 systemctl enable rsyncd.service
